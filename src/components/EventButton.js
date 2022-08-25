@@ -11,7 +11,7 @@ const EventButton = () => {
             }}
             onPress={_onPress}
         >
-            <Text style={{color: '#cfcfcf', fontSize: 35,}}>완료항목 전체삭제</Text>
+            <Text style={{color: '#cfcfcf', fontSize: 50, letterSpacing: 5,}}>완료항목 전체삭제</Text>
         </TouchableOpacity>
     )
 }
