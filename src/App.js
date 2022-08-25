@@ -34,6 +34,7 @@ const List = styled.ScrollView`
 export default function App() {
   const [newTask, setNewTask] = useState('');
   const width = Dimensions.get('window').width;
+  const [tasks, setTasks] = useState({});
 
   //항목 생성
   const _addTask = () => {
@@ -60,9 +61,11 @@ export default function App() {
           onSubmitEditing={_addTask}
         />
         <List width={width}>
-          <Task text="React Native"/>
-          <Task text="세계여행"/>
-          <Task text="도서 1000권 읽기"/>
+          {Object.values(tasks)
+                 .reverse()
+                 .map(item => {
+                  <Task key={item.id} text={item.text}/>
+          })}
         </List>
         <EventButton/>
       </Container>
