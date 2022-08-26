@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 
 
-const EventButton = () => {
+const EventButton = ({onPress}) => {
     const _onPress = ({deleteCompletedTask}) => deleteCompletedTask;
 
     return (
