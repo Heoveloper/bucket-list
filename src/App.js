@@ -5,7 +5,7 @@ import { theme } from './theme'
 import Input from './components/Input';
 import EventButton from './components/EventButton';
 import Task from './components/Task'
-import AsyncStorage from '@react-native-community/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 // import { AppLoading } from 'expo'; 
 import AppLoading from 'expo-app-loading';
 
@@ -69,7 +69,7 @@ export default function App() {
   }
 
   const _deleteTask = id => {
-    const currentTasks = Object.assign([], tasks);
+    const currentTasks = Object.assign({}, tasks);
     delete currentTasks[id];
     _saveTasks(currentTasks);
   };
@@ -89,6 +89,12 @@ export default function App() {
   const _onBlur = () => {
     setNewTask('');
   };
+
+  const _deleteCompletedTask = id => {
+    const currentTasks = Object.assign({}, tasks);
+    delete currentTasks[id]['completed'];
+    _saveTasks(currentTasks);
+  }
 
   return isReady ? (
     <ThemeProvider theme={theme}>
@@ -118,7 +124,7 @@ export default function App() {
                   />
           ))}
         </List>
-        <EventButton/>
+        <EventButton deleteCompletedTask={_deleteCompletedTask}/>
       </Container>
     </ThemeProvider>
   ) : (

@@ -1,8 +1,11 @@
 import React from 'react';
 import { TouchableOpacity, Text } from 'react-native';
+import PropTypes from 'prop-types';
 
-const EventButton = () => {
-    const _onPress = () => console.log('이거 누르면 완료항목 전체삭제');
+
+
+const EventButton = ({deleteCompletedTask}) => {
+    const _onPress = () => deleteCompletedTask()
 
     return (
         <TouchableOpacity
@@ -15,5 +18,9 @@ const EventButton = () => {
         </TouchableOpacity>
     )
 }
+
+EventButton.propTypes = {
+    deleteCompletedTask: PropTypes.func.isRequired,
+};
 
 export default EventButton;
