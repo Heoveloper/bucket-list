@@ -118,21 +118,25 @@ export default function App() {
     setNewTask('');
   };
 
-  // const _deleteCompletedTask = item => {
-  //   if (obj === 'null') return null;
-  //   else {
-  //     delete currentTasks[item.completed];
-  //     _saveTasks(currentTasks);
-  //   }
-  // }
-
+  //완료항목 전체 삭제
   const _delAllTask = () => {
+    
+    const currentTasks = {...tasks};
 
+    //완료항목
+    const completedTasks =
+      Object.entries(currentTasks)
+            .filter (task => task[1].completed==true);
+
+
+    //완료항목이 없는 경우 확인창을 띄우지 않는다
+    if (completedTasks.length < 0) return;
+
+    //미완료항목
     const deleteCompletedItems = () => {
-      const currentTasks = {...tasks};
       const filteredTasks =
-      Object.fromEntries(Object.entries(currentTasks)
-                               .filter(task => task[1].completed == false));
+       Object.fromEntries(Object.entries(currentTasks)
+                                .filter(task => task[1].completed == false));
       storeData('tasks', filteredTasks);
     }
 
