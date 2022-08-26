@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 
 
 
-const EventButton = ({deleteCompletedTask}) => {
-    const _onPress = () => deleteCompletedTask()
+const EventButton = () => {
+    const _onPress = ({deleteCompletedTask}) => deleteCompletedTask;
 
     return (
         <TouchableOpacity

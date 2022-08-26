@@ -90,10 +90,13 @@ export default function App() {
     setNewTask('');
   };
 
-  const _deleteCompletedTask = id => {
+  const _deleteCompletedTask = item => {
     const currentTasks = Object.assign({}, tasks);
-    delete currentTasks[id]['completed'];
+    if (obj === 'null') return null;
+    else {
+    delete currentTasks[item.completed];
     _saveTasks(currentTasks);
+    }
   }
 
   return isReady ? (
